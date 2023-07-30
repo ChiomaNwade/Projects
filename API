@@ -1,0 +1,76 @@
+# internal package aka we wrote it
+from config import HOST, PASSWORD, USER
+# external one that we have to install using pip
+import mysql.connector
+
+
+def connect_to_db(db_name):
+    """
+    A function that allows you to connect to any given MySQL database as a root user
+    :param db_name: the database name that we want to connect e.g backery, parts, tests
+    :return: an object for connecting into the given database
+    """
+    cnx = mysql.connector.connect(
+        host=HOST,
+        user=USER,
+        password=PASSWORD,
+        #authentication method used
+        auth_plugin = 'mysql_native_password',
+        database=db_name
+    )
+    return cnx
+
+def get_all_records():
+    db_name = 'tests'
+    db_connection = connect_to_db(db_name)
+    cur = db_connection.cursor()
+    print('Connected to database ', db_name)
+
+    query = """SELECT * FROM abcreport"""
+    cur.execute(query)
+
+    #returns all the rows as tuples
+    result = cur.fetchall()
+
+    for row in result:
+        print(row)
+    cur.close()
+
+get_all_records()
+
+# internal package aka we wrote it
+
+
+
+
+def connect_to_db(db_name):
+    """
+    A function that allows you to connect to any given MySQL database as a root user
+    :param db_name: the database name that we want to connect e.g backery, parts, tests
+    :return: an object for connecting into the given database
+    """
+    cnx = mysql.connector.connect(
+        host=HOST,
+        user=USER,
+        password=PASSWORD,
+        #authentication method used
+        auth_plugin = 'mysql_native_password',
+        database=db_name
+    )
+    return cnx
+
+def get_all_records():
+    db_name = 'tests'
+    db_connection = connect_to_db(db_name)
+    cur = db_connection.cursor()
+    print('Connected to database ', db_name)
+
+    query = """SELECT * FROM abcreport"""
+    cur.execute(query)
+
+    #returns all the rows as tuples
+    result = cur.fetchall()
+
+    for row in result:
+        print(row)
+    cur.close()
