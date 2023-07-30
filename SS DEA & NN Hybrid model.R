@@ -63,10 +63,7 @@ summary(originaldata)
 #ccrfeatureplot <- as.data.frame(cor(ccrcorr))
 #write_xlsx(summary_df, "General statistics.xlsx")
 #summary(originaldata)
-dissert
-Chioma Nwade
-2023-01-05
-setwd("/Users/chiomanwade/RPRACTICE")
+
 library(readxl)
 library(ggplot2)
 library(ggcorrplot)
